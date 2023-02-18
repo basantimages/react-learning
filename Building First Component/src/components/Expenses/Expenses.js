@@ -16,7 +16,9 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
-  let myExpenses = <h3>No Expenses to show!!!</h3>
+  let myExpenses = <h3>No Expenses to show!!!</h3>;
+
+  let singleExpense = <h3>Only single Expense here. Please add more...</h3>;
 
   if (filteredExpenses.length > 0) {
     myExpenses = filteredExpenses.map((expense) => (
@@ -36,6 +38,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        {filteredExpenses.length === 1 && singleExpense}
         {myExpenses}
       </Card>
     </div>
